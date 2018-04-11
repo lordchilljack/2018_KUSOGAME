@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameCtrl : MonoBehaviour {
-	public GameObject Player;
+	public GameObject PlayerH;
+	public GameObject PlayerV;
 	public Canvas HUDDisplay;
 	public int VolumeStatus = 0;
 	public Text CurrentVolume = null;
@@ -21,8 +22,8 @@ public class GameCtrl : MonoBehaviour {
 	public float SaintTelent = 0;
 	public float SaintCountdown = 0;
 	public Text CurrentSaint = null;
-	public int H;
-	public int V;
+	public int NowRH;
+	public int NowRV;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +35,7 @@ public class GameCtrl : MonoBehaviour {
 	//
 	int PlayerFacingV(){
 		float NowFacing;
-		NowFacing = Player.GetComponentInChildren<GameObject>().transform.localRotation.x;
+		NowFacing = PlayerV.transform.rotation.x;
 		if (NowFacing <= 30.0f && NowFacing > -39.0f) {
 			return 0;
 		} else if (NowFacing <= -39.0f) {
@@ -49,7 +50,7 @@ public class GameCtrl : MonoBehaviour {
 	//
 	int PlayerFacingH(){
 		float NowFacing;
-		NowFacing = Player.transform.localRotation.y;
+		NowFacing = PlayerH.transform.rotation.y;
 		if (NowFacing <= 60.0f && NowFacing > -60.0f) {
 			return 0;
 		} else if (NowFacing <= -60.0f && NowFacing > -100.0f) {
@@ -98,17 +99,28 @@ public class GameCtrl : MonoBehaviour {
 			JizzStatus = "on";
 		}
 	}
-		
 
 	//
-	//調整HUD是否要顯示
+	//依據玩家視角影藏HUD
+	//
+	void HUDHide(){
+		NowRH = PlayerFacingH ();
+		NowRV = PlayerFacingV ();
+		GameObject[] FrontButtons = GameObject.FindGameObjectsWithTag ("FrontAct");
+		if (NowRH != 0) {
+			for(int i=0;i<FrontButtons.Length;i++){
+				FrontButtons[i].SetActive(false);
+			}
+		} else{
+			for(int i=0;i<FrontButtons.Length;i++){
+				FrontButtons[i].SetActive(true);
+			}
+		}
+	}
+	//	
+	// UI連動更新
 	//
 	void HUDUpdate(){
-
-	}
-
-	// Update is called once per frame
-	void Update () {
 		//print (ListenCarefullyCountdown);
 		if (JizzStatus == "on") {
 			JizzCurrentTime += Time.deltaTime;
@@ -145,5 +157,11 @@ public class GameCtrl : MonoBehaviour {
 		} else if (ListenCarefullyCountdown <= 0) {
 			ListenCarefullyCountdown = 0;
 		}
+	}
+
+	// Update is called once per frame
+	void Update () {
+		HUDHide ();
+		HUDUpdate ();
 	}
 }

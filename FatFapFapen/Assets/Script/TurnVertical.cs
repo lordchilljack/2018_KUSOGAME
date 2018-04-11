@@ -30,7 +30,6 @@ public class TurnVertical : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		float inputH;
 		float inputV;
 		if (m_TargetAngles.y > 90){
 			m_TargetAngles.y -= 180;

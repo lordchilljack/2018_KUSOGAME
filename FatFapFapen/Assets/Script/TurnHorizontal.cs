@@ -31,7 +31,6 @@ public class TurnHorizontal : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float inputH;
-		float inputV;
         if (m_TargetAngles.y > 180){
             m_TargetAngles.y -= 360;
             m_FollowAngles.y -= 360;
