@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1404,7 +1404,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 735336804}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961741069}
+        m_MethodName: RefeshVolumeStatus
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: down
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &735336804
@@ -1789,6 +1800,7 @@ GameObject:
   - component: {fileID: 961741067}
   - component: {fileID: 961741066}
   - component: {fileID: 961741065}
+  - component: {fileID: 961741069}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1859,6 +1871,23 @@ Transform:
   m_Father: {fileID: 1834491195}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &961741069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 961741064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c805c05e1af8c4f42991fe4f0406f48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  HUDDisplay: {fileID: 0}
+  VolumeStatus: 0
+  CurrentVolume: {fileID: 2131655531}
+  H: 0
+  V: 0
 --- !u!1 &963159218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,6 +3693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 959062049}
   HUDDisplay: {fileID: 1496805123}
+  VolumeStatus: 0
+  CurrentVolume: {fileID: 0}
   H: 0
   V: 0
 --- !u!4 &1933499222
@@ -4076,7 +4107,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2129834669}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961741069}
+        m_MethodName: RefeshVolumeStatus
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: up
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2129834669
@@ -4123,7 +4165,7 @@ GameObject:
   - component: {fileID: 2131655532}
   - component: {fileID: 2131655531}
   m_Layer: 5
-  m_Name: Value
+  m_Name: VolumeValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4179,7 +4221,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\n\n\n"
+  m_Text: 'MUTE
+
+
+
+'
 --- !u!222 &2131655532
 CanvasRenderer:
   m_ObjectHideFlags: 0

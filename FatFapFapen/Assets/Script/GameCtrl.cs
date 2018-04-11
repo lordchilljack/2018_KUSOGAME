@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameCtrl : MonoBehaviour {
 	public GameObject Player;
 	public Canvas HUDDisplay;
+	public int VolumeStatus = 0;
+	public Text CurrentVolume = null;
 	public int H;
 	public int V;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -42,6 +46,27 @@ public class GameCtrl : MonoBehaviour {
 		} else{
 			return 3;
 		}
+	}
+
+	//
+	// 音量調整
+	//
+	public void RefeshVolumeStatus(string VolumeCtrl){
+		if (VolumeCtrl == "up") {
+			if (VolumeStatus < 10) {
+				VolumeStatus++;
+			}
+		} else if (VolumeCtrl == "down") {
+			if (VolumeStatus > 0) {
+				VolumeStatus--;
+			}
+		}
+		if (VolumeStatus == 0)
+			CurrentVolume.text = "MUTE";
+		else if (VolumeStatus == 10)
+			CurrentVolume.text = "MAX";
+		else
+			CurrentVolume.text = "".PadRight(VolumeStatus,'♦');
 	}
 
 	//
