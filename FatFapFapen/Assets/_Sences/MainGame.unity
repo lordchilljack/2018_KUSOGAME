@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 462316147}
   - component: {fileID: 462316146}
   m_Layer: 5
-  m_Name: Value
+  m_Name: PlayerStatusValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1404,7 +1404,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 735336804}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961741069}
+        m_MethodName: RefeshVolumeStatus
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: down
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &735336804
@@ -1451,7 +1462,7 @@ GameObject:
   - component: {fileID: 815148390}
   - component: {fileID: 815148389}
   m_Layer: 5
-  m_Name: CurrentStatus
+  m_Name: PlayerStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1508,7 +1519,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u72C0\u614B\u793A\u610F\uFF1A\n\n\n"
+  m_Text: "\u73A9\u5BB6\u72C0\u614B\uFF1A\n\n\n"
 --- !u!222 &815148390
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1789,6 +1800,7 @@ GameObject:
   - component: {fileID: 961741067}
   - component: {fileID: 961741066}
   - component: {fileID: 961741065}
+  - component: {fileID: 961741069}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1859,6 +1871,36 @@ Transform:
   m_Father: {fileID: 1834491195}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &961741069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 961741064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c805c05e1af8c4f42991fe4f0406f48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  HUDDisplay: {fileID: 0}
+  VolumeStatus: 0
+  CurrentVolume: {fileID: 2131655531}
+  ListenCarefullyCountdown: 0
+  CurrentHearing: {fileID: 1895582350}
+  HearingTelent: 0
+  JizzStatus: 
+  JizzDefaultTime: 5
+  JizzTelent: 0
+  JizzCurrentTime: 0
+  JizzBar: {fileID: 1398018363}
+  SaintStatus: off
+  SaintDefaultTime: 30
+  SaintTelent: 0
+  SaintCountdown: 0
+  CurrentSaint: {fileID: 1830389336}
+  H: 0
+  V: 0
 --- !u!1 &963159218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +1976,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 963159221}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961741069}
+        m_MethodName: ListenCarefully
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &963159221
@@ -2384,6 +2437,74 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1307236646}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1398018360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1398018361}
+  - component: {fileID: 1398018364}
+  - component: {fileID: 1398018363}
+  m_Layer: 5
+  m_Name: JizzPcs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1398018361
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398018360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 0.1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1496805124}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -84.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1398018363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398018360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1398018364
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1398018360}
 --- !u!1 &1489355057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,6 +2675,7 @@ RectTransform:
   - {fileID: 154464753}
   - {fileID: 1585741274}
   - {fileID: 1489355058}
+  - {fileID: 1398018361}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3383,7 +3505,7 @@ GameObject:
   - component: {fileID: 1830389337}
   - component: {fileID: 1830389336}
   m_Layer: 5
-  m_Name: Value
+  m_Name: SaintValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3439,7 +3561,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\n\n"
+  m_Text: "\u5C3B\u5C3B\u5DF2\u5C31\u7DD2\n\n"
 --- !u!222 &1830389337
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3572,7 +3694,7 @@ GameObject:
   - component: {fileID: 1895582351}
   - component: {fileID: 1895582350}
   m_Layer: 5
-  m_Name: Value
+  m_Name: ListenValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3628,7 +3750,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u25FC\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\n\n\n"
+  m_Text: "\u672A\u555F\u52D5\n\n\n"
 --- !u!222 &1895582351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3664,6 +3786,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 959062049}
   HUDDisplay: {fileID: 1496805123}
+  VolumeStatus: 0
+  CurrentVolume: {fileID: 0}
+  ListenCarefullyCountdown: 0
+  CurrentHearing: {fileID: 0}
+  HearingTelent: 0
+  JizzStatus: 
+  JizzDefaultTime: 5
+  JizzTelent: 0
+  JizzCurrentTime: 0
+  JizzBar: {fileID: 0}
+  SaintStatus: off
+  SaintDefaultTime: 30
+  SaintTelent: 0
+  SaintCountdown: 0
+  CurrentSaint: {fileID: 0}
   H: 0
   V: 0
 --- !u!4 &1933499222
@@ -3840,7 +3977,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1965830989}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961741069}
+        m_MethodName: JizzProcess
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1965830989
@@ -4076,7 +4224,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2129834669}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 961741069}
+        m_MethodName: RefeshVolumeStatus
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: up
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2129834669
@@ -4123,7 +4282,7 @@ GameObject:
   - component: {fileID: 2131655532}
   - component: {fileID: 2131655531}
   m_Layer: 5
-  m_Name: Value
+  m_Name: VolumeValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4179,7 +4338,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\u2666\uFE0E\n\n\n"
+  m_Text: 'MUTE
+
+
+
+'
 --- !u!222 &2131655532
 CanvasRenderer:
   m_ObjectHideFlags: 0
