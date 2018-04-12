@@ -41,7 +41,7 @@ public class GameCtrl : MonoBehaviour {
 	int PlayerFacingV(){
 		float NowFacing;
 		NowFacing = PlayerV.transform.rotation.eulerAngles.x;
-		Debug.Log ("NowFacing "+PlayerV.transform.rotation.eulerAngles.x.ToString());
+		//Debug.Log ("NowFacing "+PlayerV.transform.rotation.eulerAngles.x.ToString());
 		if ((NowFacing < 25.0f && NowFacing > 0.0f)|| (NowFacing > 320.0f && NowFacing <= 360.0f)) {
 			return 0;
 		} else if (NowFacing <= 50.0f && NowFacing > 25.0f) {
