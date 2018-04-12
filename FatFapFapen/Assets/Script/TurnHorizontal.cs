@@ -3,63 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TurnHorizontal : MonoBehaviour {
-	public float RotationSpeed = 10;
-	public float DampingTime =0.2f;
-    private Vector3 m_TargetAngles;
-    private Vector3 m_FollowAngles;
-    private Vector3 m_FollowVelocity;
-    private Quaternion m_OriginalRotation;
-    private static Vector2 rotationRange = new Vector2(0, 360);
-    private static Vector2 _rotationRangeLower = new Vector2();
-    public static Vector2 rotationRangeLower
-        {
-            set
-            {
-                if (value != new Vector2()) {
-                    _rotationRangeLower = value;
-                } else {
-                    _rotationRangeLower = -rotationRange;
-                }
-            }
-        }
-	// Use this for initialization
-	void Start () {
-		 _rotationRangeLower = -rotationRange;
-        m_OriginalRotation = transform.localRotation;
+	public float rotationRange = 100;
+	public float rotationSpeed = 2.5f;
+	public float dampingTime = 0.2f;
+
+	private Vector3 targetAngles;
+	private Vector3 followAngles;
+	private Vector3 followVelocity;
+	private Quaternion originalRotation;
+
+	void Start()
+	{
+		originalRotation = transform.localRotation;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		float inputH;
-        if (m_TargetAngles.y > 180){
-            m_TargetAngles.y -= 360;
-            m_FollowAngles.y -= 360;
-        }
-        if (m_TargetAngles.x > 180){
-            m_TargetAngles.x -= 360;
-            m_FollowAngles.x -= 360;
-        }  
-        if (m_TargetAngles.y < -180){
-            m_TargetAngles.y += 360;
-            m_FollowAngles.y += 360;
-        }
-         if (m_TargetAngles.x < -180){
-            m_TargetAngles.x += 360;
-            m_FollowAngles.x += 360;
-         }
-		inputH = Input.GetAxis("Horizontal");
 
-		m_TargetAngles.y += inputH*RotationSpeed;
-	
+	void Update()
+	{
+		transform.localRotation = originalRotation;
 
-		// clamp values to allowed range
-		m_TargetAngles.y = Mathf.Clamp(m_TargetAngles.y, _rotationRangeLower.y*0.5f, rotationRange.y*0.5f);
+		float inputHorizontal = Input.GetAxis("Horizontal");
 
+		targetAngles.y += inputHorizontal * rotationSpeed;
+		//
+		// 限制旋轉角度
+		//
+		//targetAngles.y = Mathf.Clamp(targetAngles.y, -rotationRange * 0.5f, rotationRange * 0.5f);
 
-		// smoothly interpolate current values to target angles
-		m_FollowAngles = Vector3.SmoothDamp(m_FollowAngles, m_TargetAngles, ref m_FollowVelocity, DampingTime);
-
-		// update the actual gameobject's rotation
-		transform.localRotation = m_OriginalRotation*Quaternion.Euler(-m_FollowAngles.x, m_FollowAngles.y, 0);
+		followAngles = Vector3.SmoothDamp(followAngles, targetAngles, ref followVelocity, dampingTime);
+		transform.localRotation = originalRotation * Quaternion.Euler(-followAngles.x, followAngles.y, 0);
 	}
 }
