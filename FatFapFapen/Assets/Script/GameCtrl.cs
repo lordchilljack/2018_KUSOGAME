@@ -24,6 +24,7 @@ public class GameCtrl : MonoBehaviour {
 	public Text CurrentSaint = null;
 	public int NowRH;
 	public int NowRV;
+	private bool PantsWaer=True;
 
 	// Use this for initialization
 	void Start () {
@@ -35,7 +36,7 @@ public class GameCtrl : MonoBehaviour {
 	//
 	int PlayerFacingV(){
 		float NowFacing;
-		NowFacing = PlayerV.transform.rotation.x;
+		NowFacing = PlayerV.Quaternion.x;
 		if (NowFacing <= 30.0f && NowFacing > -39.0f) {
 			return 0;
 		} else if (NowFacing <= -39.0f) {
@@ -50,7 +51,7 @@ public class GameCtrl : MonoBehaviour {
 	//
 	int PlayerFacingH(){
 		float NowFacing;
-		NowFacing = PlayerH.transform.rotation.y;
+		NowFacing = PlayerH.Quaternion.y;
 		if (NowFacing <= 60.0f && NowFacing > -60.0f) {
 			return 0;
 		} else if (NowFacing <= -60.0f && NowFacing > -100.0f) {
@@ -95,7 +96,7 @@ public class GameCtrl : MonoBehaviour {
 	// 消耗衛生紙
 	//
 	public void JizzProcess(){
-		if (SaintStatus == "off") {
+		if (SaintStatus == "off" && !PantsWaer) {
 			JizzStatus = "on";
 		}
 	}
