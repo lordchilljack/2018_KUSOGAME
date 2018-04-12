@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class GameCtrl : MonoBehaviour {
 	public GameObject PlayerH;
 	public GameObject PlayerV;
+	public AudioSource PornAudio;
+	public GameObject PornVideo;
 	public Canvas HUDDisplay;
-	public int VolumeStatus = 0;
+	public int VolumeStatus = 5;
 	public Text CurrentVolume = null;
 	public float ListenCarefullyCountdown = 0;
 	public Text CurrentHearing = null;
@@ -22,13 +24,15 @@ public class GameCtrl : MonoBehaviour {
 	public float SaintTelent = 0;
 	public float SaintCountdown = 0;
 	public Text CurrentSaint = null;
-	public int NowRH;
-	public int NowRV;
-	private bool PantsWaer=True;
+	public Text CurrentNotice = null;
+
+	private int NowRH=0;
+	private int NowRV=0;
+	private bool PantsWaer = true;
 
 	// Use this for initialization
 	void Start () {
-		
+		PornAudio.volume = (float)VolumeStatus/10;		
 	}
 
 	//
@@ -36,13 +40,16 @@ public class GameCtrl : MonoBehaviour {
 	//
 	int PlayerFacingV(){
 		float NowFacing;
-		NowFacing = PlayerV.Quaternion.x;
-		if (NowFacing <= 30.0f && NowFacing > -39.0f) {
+		NowFacing = PlayerV.transform.rotation.eulerAngles.x;
+		Debug.Log ("NowFacing "+PlayerV.transform.rotation.eulerAngles.x.ToString());
+		if ((NowFacing < 25.0f && NowFacing > 0.0f)|| (NowFacing > 320.0f && NowFacing <= 360.0f)) {
 			return 0;
-		} else if (NowFacing <= -39.0f) {
+		} else if (NowFacing <= 50.0f && NowFacing > 25.0f) {
 			return 1;
-		} else{
+		} else if(NowFacing < 320.0f && NowFacing >= 310.0f){
 			return 2;
+		} else{
+			return 0;
 		}
 	}
 
@@ -51,15 +58,19 @@ public class GameCtrl : MonoBehaviour {
 	//
 	int PlayerFacingH(){
 		float NowFacing;
-		NowFacing = PlayerH.Quaternion.y;
-		if (NowFacing <= 60.0f && NowFacing > -60.0f) {
+		NowFacing = PlayerH.transform.rotation.eulerAngles.y;
+		//Debug.Log ("NowFacing "+PlayerH.transform.rotation.eulerAngles.y.ToString());
+		if ((NowFacing <= 70.0f && NowFacing > 0.0f) || (NowFacing <= 360.0f && NowFacing > 290.0f)) {
 			return 0;
-		} else if (NowFacing <= -60.0f && NowFacing > -100.0f) {
+		} else if (NowFacing <= 290.0f && NowFacing > 260.0f) {
 			return 1;
-		} else if (NowFacing <= 100.0f && NowFacing > 60.0f) {
+		} else if (NowFacing <= 100.0f && NowFacing > 70.0f) {
 			return 2;
-		} else{
+		} else if (NowFacing <= 260.0f && NowFacing > 100.0f) {
+			Debug.Log ("NowFacing " + PlayerH.transform.rotation.eulerAngles.y.ToString ());
 			return 3;
+		} else {
+			return 0;
 		}
 	}
 
@@ -82,6 +93,7 @@ public class GameCtrl : MonoBehaviour {
 			CurrentVolume.text = "MAX";
 		else
 			CurrentVolume.text = "".PadRight(VolumeStatus,'♦');
+		PornAudio.volume = (float)VolumeStatus/10;
 	}
 
 	//
@@ -98,7 +110,29 @@ public class GameCtrl : MonoBehaviour {
 	public void JizzProcess(){
 		if (SaintStatus == "off" && !PantsWaer) {
 			JizzStatus = "on";
+		} else if(SaintStatus == "off" && PantsWaer){
+			CurrentNotice.text = "褲鏈未開啟";
+		} else if(SaintStatus == "on"){
+			CurrentNotice.text = "賢者模式中";
 		}
+	}
+
+	//
+	// 拉開/關起褲鏈
+	//
+	public void ZipzapPants(){
+		if (JizzCurrentTime != 0) {
+			PantsWaer = false;
+			CurrentNotice.text = "高潮中 制御不可";
+		} else {
+			PantsWaer = !PantsWaer;
+			if (PantsWaer) {
+				CurrentNotice.text = "褲鏈已拉上";
+			} else {
+				CurrentNotice.text = "褲鏈解放中";
+			}
+		}
+
 	}
 
 	//
@@ -108,14 +142,26 @@ public class GameCtrl : MonoBehaviour {
 		NowRH = PlayerFacingH ();
 		NowRV = PlayerFacingV ();
 		GameObject[] FrontButtons = GameObject.FindGameObjectsWithTag ("FrontAct");
-		if (NowRH != 0) {
-			for(int i=0;i<FrontButtons.Length;i++){
-				FrontButtons[i].SetActive(false);
+		GameObject[] LowButtons = GameObject.FindGameObjectsWithTag ("LowAct");
+		if (NowRH == 0) {
+			if (NowRV == 0) {
+				for (int i = 0; i < FrontButtons.Length; i++) {
+					FrontButtons [i].transform.localScale = new Vector3 (1, 1, 1);
+				}
+			} else {
+				for(int i=0;i<FrontButtons.Length;i++){
+					FrontButtons [i].transform.localScale=new Vector3(0, 0, 0);
+				}
 			}
 		} else{
 			for(int i=0;i<FrontButtons.Length;i++){
-				FrontButtons[i].SetActive(true);
+				FrontButtons [i].transform.localScale=new Vector3(0, 0, 0);
 			}
+		}
+		if (NowRV == 1) {
+			LowButtons [0].transform.localScale = new Vector3 (1, 1, 1);
+		} else {
+			LowButtons [0].transform.localScale = new Vector3 (0, 0, 0);
 		}
 	}
 	//	

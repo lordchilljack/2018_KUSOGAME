@@ -52,8 +52,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\GameCtrl.cs" />
-     <Compile Include="Assets\Script\PlayerContralV.cs" />
-     <Compile Include="Assets\Script\PlayerControlH.cs" />
      <Compile Include="Assets\Script\TurnHorizontal.cs" />
      <Compile Include="Assets\Script\TurnVertical.cs" />
  <Reference Include="UnityEngine.UI">
