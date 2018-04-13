@@ -25,7 +25,8 @@ public class GameCtrl : MonoBehaviour {
 	public float SaintCountdown = 0;
 	public Text CurrentSaint = null;
 	public Text CurrentNotice = null;
-
+	public string NoticeInfo;
+	public float NoticeTimer = 2;
 	private int NowRH=0;
 	private int NowRV=0;
 	private bool PantsWaer = true;
@@ -108,6 +109,7 @@ public class GameCtrl : MonoBehaviour {
 	// 消耗衛生紙
 	//
 	public void JizzProcess(){
+		NoticeInfo = "on";
 		if (SaintStatus == "off" && !PantsWaer) {
 			JizzStatus = "on";
 		} else if(SaintStatus == "off" && PantsWaer){
@@ -121,6 +123,7 @@ public class GameCtrl : MonoBehaviour {
 	// 拉開/關起褲鏈
 	//
 	public void ZipzapPants(){
+		NoticeInfo = "on";
 		if (JizzCurrentTime != 0) {
 			PantsWaer = false;
 			CurrentNotice.text = "高潮中 制御不可";
@@ -169,6 +172,14 @@ public class GameCtrl : MonoBehaviour {
 	//
 	void HUDUpdate(){
 		//print (ListenCarefullyCountdown);
+		if (NoticeInfo == "on") {
+			NoticeTimer -= Time.deltaTime;
+			if (NoticeTimer < 0) {
+				CurrentNotice.text = "";
+				NoticeTimer = 2;
+				NoticeInfo = "off";
+			}
+		}
 		if (JizzStatus == "on") {
 			JizzCurrentTime += Time.deltaTime;
 			JizzBar.fillAmount = JizzCurrentTime / (JizzDefaultTime - JizzTelent);
