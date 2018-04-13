@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PCCtrl: MonoBehaviour {
 
@@ -32,7 +33,7 @@ public class PCCtrl: MonoBehaviour {
 	void Update () {
 		GameObject[] PPlayer = GameObject.FindGameObjectsWithTag ("PornPlayer");
 		RaycastHit MouseHit;
-		if (Input.GetMouseButtonDown(0)) {
+		if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject(-1)) { // 修正 UI 層的碰撞偵測。
 			Ray MouseRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 			if (Physics.Raycast (MouseRay , out MouseHit, 200.0f)) {
 				if (MouseHit.transform != null) {
