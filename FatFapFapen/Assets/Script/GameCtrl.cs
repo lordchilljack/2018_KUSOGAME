@@ -68,7 +68,6 @@ public class GameCtrl : MonoBehaviour {
 		} else if (NowFacing <= 100.0f && NowFacing > 70.0f) {
 			return 2;
 		} else if (NowFacing <= 260.0f && NowFacing > 100.0f) {
-			Debug.Log ("NowFacing " + PlayerH.transform.rotation.eulerAngles.y.ToString ());
 			return 3;
 		} else {
 			return 0;
@@ -219,7 +218,11 @@ public class GameCtrl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
+
+			;
 		HUDHide ();
 		HUDUpdate ();
 	}
+
 }

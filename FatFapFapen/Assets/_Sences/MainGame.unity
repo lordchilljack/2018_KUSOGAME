@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 55478810}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 2.3600006, z: 2.55}
+  m_LocalPosition: {x: 0, y: 2.3600006, z: 0.1}
   m_LocalScale: {x: -15.100035, y: 1.0000005, z: 8.000004}
   m_Children: []
   m_Father: {fileID: 759425961}
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 659818700}
   m_Layer: 0
   m_Name: PornMain
-  m_TagString: Untagged
+  m_TagString: PornPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1803,7 +1803,7 @@ VideoPlayer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 659818699}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 14b0f7448e302ba4ebf73b410ccfbb0f, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 2cfe759c3bf853a4ca90584da034bc66, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1824,7 +1824,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -2157,8 +2157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 318.5, y: -46.799988}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 360.3, y: -46.799988}
+  m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &735336803
 MonoBehaviour:
@@ -2253,6 +2253,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 759425961}
+  - component: {fileID: 759425962}
   m_Layer: 0
   m_Name: PornWindow
   m_TagString: Untagged
@@ -2267,7 +2268,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 759425960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -176, y: 67.09991, z: 524}
+  m_LocalPosition: {x: -176, y: 67.09991, z: 523.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 659818704}
@@ -2276,6 +2277,24 @@ Transform:
   m_Father: {fileID: 196011975}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &759425962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 759425960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8501d6e3815e64caf40f1acedb689e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeskTop: {fileID: 990544904}
+  PornMainWindow: {fileID: 659818699}
+  PornPause: {fileID: 55478810}
+  MinBar: {fileID: 1076658422}
+  NowPointName: none
+  PCState: 0
+  PornStatePause: 1
 --- !u!1 &820088450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,7 +2811,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 990544904}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -176, y: 69.45991, z: 526.47}
+  m_LocalPosition: {x: -176, y: 69.45991, z: 529.8}
   m_LocalScale: {x: 150.4, y: 80, z: 1}
   m_Children: []
   m_Father: {fileID: 196011975}
@@ -2932,7 +2951,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076658422}
   m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -62.23, y: -35.3, z: 0.86}
+  m_LocalPosition: {x: -62.23, y: -35.3, z: 2.69}
   m_LocalScale: {x: 2.5, y: 1, z: 0.44}
   m_Children: []
   m_Father: {fileID: 759425961}
@@ -5365,8 +5384,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 316, y: -150}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 349.5, y: -150}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1965830988
 MonoBehaviour:
@@ -5613,8 +5632,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 318.10004, y: -15.999985}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 359.90002, y: -15.999985}
+  m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2129834668
 MonoBehaviour:
