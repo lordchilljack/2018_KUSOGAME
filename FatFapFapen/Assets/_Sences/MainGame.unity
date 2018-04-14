@@ -1877,7 +1877,7 @@ VideoPlayer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 659818699}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 2cfe759c3bf853a4ca90584da034bc66, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 86253c473443e9a4d9dd74c760fcabae, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -5399,6 +5399,8 @@ MonoBehaviour:
   SaintCountdown: 0
   CurrentSaint: {fileID: 1830389336}
   CurrentNotice: {fileID: 462316146}
+  JP: 0
+  Score: 0
   NoticeInfo: 
   NoticeTimer: 2
 --- !u!4 &1933499222
