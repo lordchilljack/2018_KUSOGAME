@@ -25,12 +25,14 @@ public class GameCtrl : MonoBehaviour {
 	public float SaintCountdown = 0;
 	public Text CurrentSaint = null;
 	public Text CurrentNotice = null;
+    public int JP = 0;
+    public int Score = 0;
 	public string NoticeInfo;
 	public float NoticeTimer = 2;
 	private int NowRH=0;
 	private int NowRV=0;
 	private bool PantsWaer = true;
-
+ 
 	// Use this for initialization
 	void Start () {
 		PornAudio.volume = (float)VolumeStatus/10;		
@@ -188,6 +190,7 @@ public class GameCtrl : MonoBehaviour {
 				JizzCurrentTime = 0;
 				SaintStatus = "on";
 				JizzBar.fillAmount = 0;
+                Score += JP;
 			}
 		}
 		if (SaintStatus == "on") {
