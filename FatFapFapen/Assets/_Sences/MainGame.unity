@@ -507,6 +507,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 65601466}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &82396452 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100008, guid: 594d3896b42bfb64e8f5b8b6b9323a02, type: 3}
+  m_PrefabInternal: {fileID: 687179016}
+--- !u!65 &82396456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 82396452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0635, y: 0.06349998, z: 1.0159999}
+  m_Center: {x: 0, y: -0.00000023841856, z: 0.5079999}
 --- !u!1 &131514002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1229,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &362566392 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 594d3896b42bfb64e8f5b8b6b9323a02, type: 3}
+  m_PrefabInternal: {fileID: 687179016}
+--- !u!65 &362566396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 362566392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0635, y: 0.06349998, z: 1.0159999}
+  m_Center: {x: 0, y: 1.0828672e-14, z: 0.5079999}
 --- !u!1 &409894841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,9 +2142,29 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.4
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 594d3896b42bfb64e8f5b8b6b9323a02, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 594d3896b42bfb64e8f5b8b6b9323a02, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &689824527 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100006, guid: 594d3896b42bfb64e8f5b8b6b9323a02, type: 3}
+  m_PrefabInternal: {fileID: 687179016}
+--- !u!65 &689824531
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 689824527}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0635, y: 0.06349998, z: 1.0159999}
+  m_Center: {x: -0.000000059604645, y: -0.00000023841856, z: 0.5079999}
 --- !u!1 &712918937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,7 +2703,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 45
   orthographic: 0
   orthographic size: 5
@@ -4032,6 +4084,38 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1521860367}
+--- !u!1 &1528134592 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 594d3896b42bfb64e8f5b8b6b9323a02, type: 3}
+  m_PrefabInternal: {fileID: 687179016}
+--- !u!65 &1528134596
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528134592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0635, y: 0.06349998, z: 1.0159999}
+  m_Center: {x: -0.000000059604645, y: 1.0828672e-14, z: 0.5079999}
+--- !u!1 &1536353546 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 594d3896b42bfb64e8f5b8b6b9323a02, type: 3}
+  m_PrefabInternal: {fileID: 687179016}
+--- !u!65 &1536353550
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1536353546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.778, y: 0.7619997, z: 0.12699999}
+  m_Center: {x: 0.0000000018626451, y: -0.00000023841858, z: 0.063499935}
 --- !u!1 &1546456044
 GameObject:
   m_ObjectHideFlags: 0
@@ -5406,6 +5490,7 @@ MonoBehaviour:
   Gain: 1
   NoticeInfo: 
   NoticeTimer: 2
+  ToiletP: {fileID: 1816153685593948, guid: 04d81014daffbab419415a9fe0adb5a9, type: 2}
 --- !u!4 &1933499222
 Transform:
   m_ObjectHideFlags: 0

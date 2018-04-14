@@ -17,7 +17,7 @@ public class EatPaper : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
 			if (Physics.Raycast (MouseRay, out MouseHit, 200.0f)) {
 				if (MouseHit.transform != null && !clicked) {
-					if (MouseHit.transform.gameObject.name == "ToiletPaper") {
+					if (MouseHit.transform.gameObject.name == "ToiletPaper(Clone)") {
 						gameObject.GetComponent<AudioSource> ().Play ();
 						clicked = true;
 					}

@@ -32,6 +32,8 @@ public class GameCtrl : MonoBehaviour {
     public float Gain = 1;
 	public string NoticeInfo;
 	public float NoticeTimer = 2;
+	public GameObject ToiletP;
+
 	private int NowRH=0;
 	private int NowRV=0;
 	private bool PantsWaer = true;
@@ -213,10 +215,14 @@ public class GameCtrl : MonoBehaviour {
                 Score += (int)JP;
                 CurrentScore.text = Score.ToString();
                 JP = 0;
+				float Px =Random.Range (-106.0f,95.0f);
+				float Py =Random.Range (223.0f,446.0f);
+				float Pz = Random.Range (198.0f, 114.0f);	
+				Instantiate (ToiletP, new Vector3 (Px, Py, Pz), Quaternion.identity);
 			}
 		}
 		if (SaintStatus == "on") {
-            print(SaintCountdown);
+            //print(SaintCountdown);
 			if (SaintCountdown == 0) {
 				SaintCountdown = SaintDefaultTime - SaintTelent;
 			} else {
@@ -245,9 +251,6 @@ public class GameCtrl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
-
-			;
 		HUDHide ();
 		HUDUpdate ();
 	}
