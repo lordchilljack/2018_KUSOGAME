@@ -15,18 +15,20 @@ public class GameCtrl : MonoBehaviour {
 	public Text CurrentHearing = null;
 	public float HearingTelent = 0;
 	public string JizzStatus = "off";
-	public float JizzDefaultTime = 5;
+	public float JizzDefaultTime = 10;
 	public float JizzTelent = 0;
 	public float JizzCurrentTime = 0;
 	public Image JizzBar;
 	public string SaintStatus = "off";
-	public float SaintDefaultTime = 30;
+	public float SaintDefaultTime;
 	public float SaintTelent = 0;
 	public float SaintCountdown = 0;
 	public Text CurrentSaint = null;
 	public Text CurrentNotice = null;
-    public int JP = 0;
+    public float JP = 0;
+    public Text CurrentJP = null;
     public int Score = 0;
+    public Text CurrentScore = null;
     public float Gain = 1;
 	public string NoticeInfo;
 	public float NoticeTimer = 2;
@@ -84,12 +86,12 @@ public class GameCtrl : MonoBehaviour {
         if (VolumeCtrl == "up") {
             if (VolumeStatus < 10) {
                 VolumeStatus++;
-                Gain += VolumeStatus * 0.1f;
+                Gain = Mathf.Pow(2, VolumeStatus);
             }
         } else if (VolumeCtrl == "down") {
             if (VolumeStatus > 0) {
                 VolumeStatus--;
-                Gain -= VolumeStatus * 0.1f;
+                Gain = Mathf.Pow(2, VolumeStatus);
             }
         }
         if (VolumeStatus == 0) {
@@ -98,7 +100,7 @@ public class GameCtrl : MonoBehaviour {
         }
         else if (VolumeStatus == 10) {
             CurrentVolume.text = "MAX";
-            Gain = 2;
+            Gain = 1024;
         }
         else
             CurrentVolume.text = "".PadRight(VolumeStatus, '♦');
@@ -179,8 +181,19 @@ public class GameCtrl : MonoBehaviour {
 	// UI連動更新
 	//
 	void HUDUpdate(){
-		//print (ListenCarefullyCountdown);
-		if (NoticeInfo == "on") {
+        GameObject[] PPlayer = GameObject.FindGameObjectsWithTag("PornPlayer");
+        if (PPlayer[0].GetComponent<UnityEngine.Video.VideoPlayer>().isPlaying && SaintStatus == "off")
+        {
+            JP += Time.deltaTime*Gain;
+            CurrentJP.text = ((int)JP).ToString();
+        }
+        else if(PPlayer[0].GetComponent<UnityEngine.Video.VideoPlayer>().isPlaying && SaintStatus == "on")
+        {
+            JP += 0.01f;
+            CurrentJP.text = ((int)JP).ToString();
+        }
+        //print (ListenCarefullyCountdown);
+        if (NoticeInfo == "on") {
 			NoticeTimer -= Time.deltaTime;
 			if (NoticeTimer < 0) {
 				CurrentNotice.text = "";
@@ -197,10 +210,13 @@ public class GameCtrl : MonoBehaviour {
 				JizzCurrentTime = 0;
 				SaintStatus = "on";
 				JizzBar.fillAmount = 0;
-                Score += JP;
+                Score += (int)JP;
+                CurrentScore.text = Score.ToString();
+                JP = 0;
 			}
 		}
 		if (SaintStatus == "on") {
+            print(SaintCountdown);
 			if (SaintCountdown == 0) {
 				SaintCountdown = SaintDefaultTime - SaintTelent;
 			} else {
@@ -210,7 +226,8 @@ public class GameCtrl : MonoBehaviour {
 					SaintCountdown = 0;
 					CurrentSaint.text = "尻尻已就緒";
 				} else {
-					CurrentSaint.text = "".PadRight ((int)Mathf.Floor (SaintCountdown), '♦');
+                    //print(SaintCountdown);
+					CurrentSaint.text = "".PadRight ((int)(SaintCountdown), '♦');
 				}
 			}
 		}

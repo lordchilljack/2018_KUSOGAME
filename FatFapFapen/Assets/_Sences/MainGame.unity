@@ -1628,7 +1628,7 @@ GameObject:
   - component: {fileID: 591781851}
   - component: {fileID: 591781850}
   m_Layer: 5
-  m_Name: Score
+  m_Name: CurrentJP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5394,11 +5394,16 @@ MonoBehaviour:
   JizzCurrentTime: 0
   JizzBar: {fileID: 1398018363}
   SaintStatus: off
-  SaintDefaultTime: 30
+  SaintDefaultTime: 10
   SaintTelent: 0
   SaintCountdown: 0
   CurrentSaint: {fileID: 1830389336}
   CurrentNotice: {fileID: 462316146}
+  JP: 0
+  CurrentJP: {fileID: 591781850}
+  Score: 100
+  CurrentScore: {fileID: 492187713}
+  Gain: 1
   NoticeInfo: 
   NoticeTimer: 2
 --- !u!4 &1933499222
