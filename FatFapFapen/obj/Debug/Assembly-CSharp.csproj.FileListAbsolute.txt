@@ -38,3 +38,4 @@ E:\2018_KUSOGAME\FatFapFapen\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 E:\2018_KUSOGAME\FatFapFapen\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 E:\2018_KUSOGAME\FatFapFapen\obj\Debug\Assembly-CSharp.dll
 E:\2018_KUSOGAME\FatFapFapen\obj\Debug\Assembly-CSharp.pdb
+E:\2018_KUSOGAME\FatFapFapen\Temp\bin\Debug\Facebook.Unity.Settings.dll
