@@ -27,6 +27,7 @@ public class GameCtrl : MonoBehaviour {
 	public Text CurrentNotice = null;
     public int JP = 0;
     public int Score = 0;
+    public float Gain = 1;
 	public string NoticeInfo;
 	public float NoticeTimer = 2;
 	private int NowRH=0;
@@ -76,25 +77,31 @@ public class GameCtrl : MonoBehaviour {
 		}
 	}
 
-	//
-	// 音量調整
-	//
-	public void RefeshVolumeStatus(string VolumeCtrl){
-		if (VolumeCtrl == "up") {
-			if (VolumeStatus < 10) {
-				VolumeStatus++;
-			}
-		} else if (VolumeCtrl == "down") {
-			if (VolumeStatus > 0) {
-				VolumeStatus--;
-			}
-		}
-		if (VolumeStatus == 0)
-			CurrentVolume.text = "MUTE";
-		else if (VolumeStatus == 10)
-			CurrentVolume.text = "MAX";
-		else
-			CurrentVolume.text = "".PadRight(VolumeStatus,'♦');
+    //
+    // 音量調整
+    //
+    public void RefeshVolumeStatus(string VolumeCtrl) {
+        if (VolumeCtrl == "up") {
+            if (VolumeStatus < 10) {
+                VolumeStatus++;
+                Gain += VolumeStatus * 0.1f;
+            }
+        } else if (VolumeCtrl == "down") {
+            if (VolumeStatus > 0) {
+                VolumeStatus--;
+                Gain -= VolumeStatus * 0.1f;
+            }
+        }
+        if (VolumeStatus == 0) {
+            CurrentVolume.text = "MUTE";
+            Gain = 1;
+        }
+        else if (VolumeStatus == 10) {
+            CurrentVolume.text = "MAX";
+            Gain = 2;
+        }
+        else
+            CurrentVolume.text = "".PadRight(VolumeStatus, '♦');
 		PornAudio.volume = (float)VolumeStatus/10;
 	}
 
