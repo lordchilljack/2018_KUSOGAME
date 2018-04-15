@@ -120,11 +120,18 @@ public class RonpaModeCtrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		if(TinkTimeTimer==TinkTimeLimit||Answered){
-			//跳下一題
+		if (CurrentPhase != 6) {
+			if (TinkTimeTimer == TinkTimeLimit || Answered) {
+				//跳下一題
+			}
+		} else {
+			//end RonpaMode 
+			if (D_Percent>= 0.8f) {
+				//抓包 END
+			} else {
+				//會去繼續看片
+			}
 		}
-
 
 	}
 }
