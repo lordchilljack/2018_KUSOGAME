@@ -1814,7 +1814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &458575006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1915,7 +1915,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 458575005}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1a7f54871a2716479440910aae53d0a, type: 3}
   m_Name: 
@@ -1929,6 +1929,7 @@ MonoBehaviour:
   Wheel: {fileID: 1643771458}
   DGague: {fileID: 1872778174}
   SGauge: {fileID: 1399977253}
+  OtakuFace: {fileID: 893575479}
   CurrentPhase: 0
   TinkTimeLimit: 10
   TinkTimeTimer: 0
@@ -5545,10 +5546,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 90acf562bdc9eec44b3b08e134eb09df, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -7750,10 +7751,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: fc96d7d8b2d38bc42850a382b2c04034, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -8063,7 +8064,10 @@ MonoBehaviour:
   PlayerV: {fileID: 1834491194}
   Door: {fileID: 1546456044}
   PornPlayer: {fileID: 659818699}
-  CurrentGameMode: 0
+  Assult_Rate: 30
+  Assult_dice: 0
+  TimeAnchorOld: 0
+  TimeAnchorNew: 0
 --- !u!82 &1933499224
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8077,7 +8081,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

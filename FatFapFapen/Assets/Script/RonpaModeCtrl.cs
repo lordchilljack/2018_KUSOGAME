@@ -16,8 +16,10 @@ public class RonpaModeCtrl : MonoBehaviour {
 	public Image DGague;
 	public Image SGauge;
 
+	public Image OtakuFace;
+
 	public int CurrentPhase = 0; //論破模式進行階段
-	public float TinkTimeLimit = 10.0f; //思考時間極限
+	public float TinkTimeLimit = 15.0f; //思考時間極限
 	public float TinkTimeTimer = 0.0f; //思考時間計數器
 	public bool Answered = false; //首否已送出回答
 	public float D_Percent = 0.0f; //危險度百分比
@@ -35,6 +37,12 @@ public class RonpaModeCtrl : MonoBehaviour {
     private float[] A3D ={-0.25f,-0.3f,-0.3f,-0.3f,-0.15f,0.05f,-0.1f,-0.4f};
     private float[] A3S ={0.3f,0.4f,0.4f,0.4f,0,0,0,1};
 
+	private Sprite d_1;
+	private Sprite d_2;
+	private Sprite d_3;
+	private Sprite h_1;
+	private Sprite h_2;
+	private Sprite h_3;
 	//
 	// 自動填入相對映問題與回答
 	//
@@ -50,7 +58,7 @@ public class RonpaModeCtrl : MonoBehaviour {
 	// 檢查環境中 褲子是否有穿 是否最小化 是否有片子聲音 一項 +0.33 危險度
 	//
 	float CheckDangerPercent(){
-		float FinalDanger=1;
+		float FinalDanger=0.99f;
 		return FinalDanger;
 	}
 
@@ -77,6 +85,11 @@ public class RonpaModeCtrl : MonoBehaviour {
 			break;
 		}
 		TinkingTime.text = TinkTimeLimit.ToString();
+		TinkTimeTimer = 0.0f;
+		Answered = false;
+		Aws1.GetComponentInParent<Button>().enabled = true;
+		Aws2.GetComponentInParent<Button>().enabled = true;
+		Aws3.GetComponentInParent<Button>().enabled = true;
 	}
 
 	//
@@ -84,62 +97,110 @@ public class RonpaModeCtrl : MonoBehaviour {
 	//
 	public void sendAws(string BtName){
 		if (BtName == "A1") {
-			D_Percent += A1D [Questions_Order[Question_Statue]];
+			D_Percent += A1D [Questions_Order[CurrentPhase]];
 			Aws2.GetComponentInParent<Button>().enabled = false;
 			Aws3.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 1;
+			Answered = true;
 		} else if (BtName == "A2") {
-			D_Percent += A2D [Questions_Order[Question_Statue]];
+			D_Percent += A2D [Questions_Order[CurrentPhase]];
 			Aws1.GetComponentInParent<Button>().enabled = false;
 			Aws3.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 2;
+			Answered = true;
 		} else if (BtName == "A3") {
-			D_Percent += A3D [Questions_Order[Question_Statue]];
-			S_Percent += A3S [Questions_Order[Question_Statue]];
+			D_Percent += A3D [Questions_Order[CurrentPhase]];
+			S_Percent += A3S [Questions_Order[CurrentPhase]];
 			Aws1.GetComponentInParent<Button>().enabled = false;
 			Aws2.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 3;
+			Answered = true;
 		}
 	}
 
 	// Use this for initialization
 	void Start () {
+		Answered = false;
+		CurrentPhase = 0;
 		FillingQA (0);
 		EveryRoundSetUp (0);
 		Questions_Order = new int[5]; // Question Order
 		Questions_Order[0] = 0;
+		S_Percent = 0.0f;
+		D_Percent = CheckDangerPercent();
+		DGague.fillAmount = D_Percent;
+		SGauge.fillAmount = S_Percent;
 		for (int i = 1; i < Questions_Order.Length; i++) {
-			Questions_Order [i] = Random.Range (1, 5);
-			for (int j = 0; j < i; j++) {
+			Questions_Order [i] = Random.Range (1, 7);
+			for (int j = 1; j < i; j++) {
 				while (Questions_Order [i] == Questions_Order [j]) {
-					j = 0;
-					Questions_Order [i] = Random.Range (1, 5);
+					j = 1;
+					Questions_Order [i] = Random.Range (1, 7);
 				}
 			}
-			//print (Questions_Order [i]);
 		}
-		Question_Statue = 0;
+		d_1 = Resources.Load<Sprite> ("d_1");
+		d_2 = Resources.Load<Sprite> ("d_2");
+		d_3 = Resources.Load<Sprite>("d_3");
+		h_1 = Resources.Load<Sprite> ("h_1");
+		h_2 = Resources.Load<Sprite> ("h_2");
+		h_3 = Resources.Load<Sprite> ("h_3");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (D_Percent <= 0.0f) {
+			D_Percent = 0.0f;
+		}
+		if (S_Percent >= 1.0f) {
+			S_Percent = 1.0f;
+		}
+		if (D_Percent <= 0.3f) {
+			if (S_Percent < 0.3f) {
+				OtakuFace.sprite = d_1;
+			} else {
+				OtakuFace.sprite = h_1;
+			}
+		} else if (D_Percent > 0.33f&& D_Percent<=0.66f) {
+			if (S_Percent < 0.3f) {
+				OtakuFace.sprite = d_2;
+			} else {
+				OtakuFace.sprite = h_2;
+			}
+		} else{
+			if (S_Percent < 0.3f) {
+				OtakuFace.sprite = d_3;
+			} else {
+				OtakuFace.sprite = h_3;
+			}
+		}
 		DGague.fillAmount = D_Percent;
 		SGauge.fillAmount = S_Percent;
-		if (CurrentPhase != 6) {
-			if (TinkTimeTimer == TinkTimeLimit || Answered) {
-				Question_Statue++;
-				FillingQA (Questions_Order [Question_Statue]);
-				EveryRoundSetUp (Questions_Order [Question_Statue]);
+		TinkTimeTimer += Time.deltaTime;
+		TinkingTime.text = (TinkTimeLimit - TinkTimeTimer).ToString("0.00");
+		if (CurrentPhase < 5) {
+			if (TinkTimeTimer >= TinkTimeLimit || Answered) {
 				CurrentPhase++;
-				//跳下一題
+				if((CurrentPhase < 5)){
+					FillingQA (Questions_Order [CurrentPhase]);
+					EveryRoundSetUp (CurrentPhase);
+				}
+
 			}
 		} else {
 			//end RonpaMode 
 			if (D_Percent>= 0.8f) {
 				DataCtrl.Data.HowEnd = 1;
 				DataCtrl.Data.GameMode = 2;
+				DataCtrl.Data.NeedChange = true;
+				Start ();
+				gameObject.GetComponent<RonpaModeCtrl> ().enabled = false;
 			} else {
 				DataCtrl.Data.GameMode = 0;
+				DataCtrl.Data.NeedChange = true;
+				Start ();
+				gameObject.GetComponent<RonpaModeCtrl> ().enabled = false;
 			}
 		}
 

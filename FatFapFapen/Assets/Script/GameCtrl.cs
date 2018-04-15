@@ -42,6 +42,7 @@ public class GameCtrl : MonoBehaviour {
 	void Start () {
 		PornAudio.volume = (float)VolumeStatus/10;
 		DataCtrl.Data.scorce = 0;
+		DataCtrl.Data.NeedChange = false;
 		Score = 0;
 		JP = 0;
 	}

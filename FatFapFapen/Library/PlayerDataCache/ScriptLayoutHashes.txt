@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/user/Desktop/FFF/FFF_V01.exe
+C:/Users/user/Desktop/FFF_1.0/FatFapFapen_v1.0.exe
 SceneListBegin?
 Assets/_Sences/Title.unity
 Assets/_Sences/Loding.unity
@@ -122,7 +122,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 cd68fe2df12c49e254a86962a5ed643c Assembly-CSharp.dll:.PCCtrl
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
-bceb6184c3963b77288dc764ecee9618 Assembly-CSharp.dll:.RonpaModeCtrl
+4826b5427139e0fce15a6342d8eb1ea0 Assembly-CSharp.dll:.RonpaModeCtrl
 32e8fe00b63ed946490b898f6024a2f2 Facebook.Unity.Settings.dll:Facebook.Unity.Settings.FacebookSettings
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -154,12 +154,12 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-397a50c04d4b98b4e42bcdb51900770c Assembly-CSharp.dll:.ProgressCtrl
+ad3da2dd99942f786260abd112ba8231 Assembly-CSharp.dll:.ProgressCtrl
 9377cee4b60a7c10ca8d5a8f2b59026c Assembly-CSharp.dll:.ending_ctrl
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DataCtrl
 354f0bcad8787fc3d5b59cc96b6f0224 Assembly-CSharp.dll:.GameCtrl
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EatPaper
 0bf02bc212cb0906138971936f1e25f0 Assembly-CSharp.dll:.TurnHorizontal
 25d04adc48253a6ef902dfcb66f56231 Assembly-CSharp.dll:.Loading
 e05368368cb96431828f603a0b1a5060 Assembly-CSharp.dll:.TitleCtrl
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DataCtrl

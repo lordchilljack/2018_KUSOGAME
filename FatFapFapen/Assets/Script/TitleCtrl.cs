@@ -41,7 +41,9 @@ public class TitleCtrl : MonoBehaviour {
 	void Start () {
 		
 	}
-	
+	public void OpenFacebook(){
+		Application.OpenURL("https://www.facebook.com/TryHarderOkay");
+	}
 	// Update is called once per frame
 	void Update () {
 		
