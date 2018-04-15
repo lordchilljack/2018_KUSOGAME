@@ -7556,6 +7556,7 @@ MonoBehaviour:
   PlayerH: {fileID: 322295813}
   PlayerV: {fileID: 1834491194}
   Door: {fileID: 1546456044}
+  PornPlayer: {fileID: 659818699}
   CurrentGameMode: 0
 --- !u!1 &1936767187
 GameObject:
