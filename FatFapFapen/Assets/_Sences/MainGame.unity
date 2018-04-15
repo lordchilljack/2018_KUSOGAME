@@ -667,7 +667,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 83507921}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 458575010}
+        m_MethodName: sendAws
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: A3
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &83507921
@@ -1910,8 +1921,16 @@ MonoBehaviour:
   Aws3: {fileID: 897231194}
   QuestionNum: {fileID: 1455602454}
   TinkingTime: {fileID: 2139675658}
-  Wheel: {fileID: 1643771456}
+  Wheel: {fileID: 1643771458}
+  DGague: {fileID: 1872778174}
+  SGauge: {fileID: 1399977253}
   CurrentPhase: 0
+  TinkTimeLimit: 10
+  TinkTimeTimer: 0
+  Answered: 0
+  D_Percent: 0
+  S_Percent: 0
+  CurrentAws: 0
 --- !u!1 &462316144
 GameObject:
   m_ObjectHideFlags: 0
@@ -4762,7 +4781,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1326822344}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 458575010}
+        m_MethodName: sendAws
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: A1
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1326822344
@@ -5113,8 +5143,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -21.308}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 436.4, y: 16.1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 372.3, y: 44.3}
+  m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455602454
 MonoBehaviour:
@@ -5142,13 +5172,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A1
+  m_Text: '- -'
 --- !u!222 &1455602455
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7879,7 +7909,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2059178093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 458575010}
+        m_MethodName: sendAws
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: A2
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2059178093

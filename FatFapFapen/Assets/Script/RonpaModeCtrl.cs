@@ -12,7 +12,9 @@ public class RonpaModeCtrl : MonoBehaviour {
 	public Text QuestionNum;
 	public Text TinkingTime;
 
-	public GameObject Wheel;
+	public Image Wheel;
+	public Image DGague;
+	public Image SGauge;
 
 	public int CurrentPhase = 0; //論破模式進行階段
 	public float TinkTimeLimit = 10.0f; //思考時間極限
@@ -20,6 +22,7 @@ public class RonpaModeCtrl : MonoBehaviour {
 	public bool Answered = false; //首否已送出回答
 	public float D_Percent = 0.0f; //危險度百分比
 	public float S_Percent = 0.0f; //害羞度百分比
+	public int CurrentAws =0;
 
 	private string[] QT ={"在幹嘛?為啥要鎖門?","你為啥不穿褲子?","剛剛那是什麼聲音?","剛剛那是什麼聲音?","你那是什麼聲音? ","沒事別一直用電腦阿?","休假日出去動動啦! ","阿親戚來你怎麼還窩在房間?","你那是..."};
     private string[] A1T ={"關你屁事","我想要通風一下","隔壁貓叫","電腦中毒啦!","OK，好","OK，好","他們來關我屁事","別人傳給我的啦"};
@@ -45,7 +48,24 @@ public class RonpaModeCtrl : MonoBehaviour {
 	// 檢查環境中 褲子是否有穿 是否最小化 是否有片子聲音 一項 +0.33 危險度
 	//
 	float CheckDangerPercent(){
-		
+		float FinalDanger=0;
+		/*
+		if(褲鍊開啟){
+			FinalDanger=FinalDanger+0.25f;
+		}
+		if(!影片最小化){
+			FinalDanger=FinalDanger+0.30f;
+		}
+		if(影片有聲音&&播放中){
+			FinalDanger=FinalDanger+0.25f;
+		}
+
+		if(GameObject.Find("ToiletPaper(Clone)")!=NULL){
+			FinalDanger=FinalDanger+0.33f;
+		}
+		*/
+
+		return FinalDanger;
 	}
 
 	//
@@ -70,7 +90,26 @@ public class RonpaModeCtrl : MonoBehaviour {
 			QuestionNum.text = "Last";
 			break;
 		}
-		TinkingTime.text = TinkTimeLimit.ToString;
+		TinkingTime.text = TinkTimeLimit.ToString();
+	}
+
+	//
+	//算出答案，同時鎖定其他按鈕
+	//
+	public void sendAws(string BtName){
+		if (BtName == "A1") {
+			Aws2.GetComponentInParent<Button>().enabled = false;
+			Aws3.GetComponentInParent<Button>().enabled = false;
+			CurrentAws = 1;
+		} else if (BtName == "A2") {
+			Aws1.GetComponentInParent<Button>().enabled = false;
+			Aws3.GetComponentInParent<Button>().enabled = false;
+			CurrentAws = 2;
+		} else if (BtName == "A3") {
+			Aws1.GetComponentInParent<Button>().enabled = false;
+			Aws2.GetComponentInParent<Button>().enabled = false;
+			CurrentAws = 3;
+		}
 	}
 
 	// Use this for initialization
