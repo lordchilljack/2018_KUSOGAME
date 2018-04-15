@@ -55,6 +55,7 @@
      <Compile Include="Assets\Script\GameCtrl.cs" />
      <Compile Include="Assets\Script\Loading.cs" />
      <Compile Include="Assets\Script\PCCtrl.cs" />
+     <Compile Include="Assets\Script\ProgressCtrl.cs" />
      <Compile Include="Assets\Script\RonpaModeCtrl.cs" />
      <Compile Include="Assets\Script\TitleCtrl.cs" />
      <Compile Include="Assets\Script\TurnHorizontal.cs" />
