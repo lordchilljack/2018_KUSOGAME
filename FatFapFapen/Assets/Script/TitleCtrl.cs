@@ -20,13 +20,32 @@ public class TitleCtrl : MonoBehaviour {
 		EasyB.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
 	}
 
-	public void AddFalling(GameObject Item){
-		Rigidbody2D Rb = Item.AddComponent<Rigidbody2D> ();
-		float Fx = Random.Range (-100.0f, +100.0f);
-		float Fy = Random.Range (-100.0f, +100.0f);
-		Rb.mass = 10;
-		Rb.AddForce(new Vector2 (Fx, Fy));
-	}
+    public void AddFalling(GameObject Item)
+    {
+
+       
+  if (Item.GetComponent<Rigidbody2D>() == null)
+        {
+   
+        Rigidbody2D Rb;
+        BoxCollider2D bc;
+
+         Rb = Item.AddComponent<Rigidbody2D>();
+         bc = Item.AddComponent<BoxCollider2D>();
+         float Fx = Random.Range(-100.0f, +100.0f) * 300;
+         float Fy = Random.Range(-100.0f, +100.0f) * 300;
+         Rb.mass = 1;
+         Rb.AddForce(new Vector2(Fx, Fy));
+        }
+        
+
+    
+      
+
+  
+            
+    }
+		
 
 	public void StartGame(){
 		SceneManager.LoadScene(1);
