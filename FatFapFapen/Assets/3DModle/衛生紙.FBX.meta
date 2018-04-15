@@ -13,12 +13,15 @@ ModelImporter:
     400004: //RootNode
     2100000: 'Material #10'
     2100002: 'Material #9'
+    2100004: 'Material #25'
+    2100006: 'Material #26'
     2300000: Box011
     2300002: Plane006
     3300000: Box011
     3300002: Plane006
     4300000: Plane006
     4300002: Box011
+    7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
   materials:

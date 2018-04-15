@@ -20,6 +20,8 @@ public class ProgressCtrl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		PornPlayer.GetComponent<VideoPlayer> ().loopPointReached += EndMainGame;
+		CurrentGameMode = 0;
+		GameDataManager.GameMode = CurrentGameMode;
 	}
 
 	void ChangeGameMode(int seed){
@@ -48,6 +50,7 @@ public class ProgressCtrl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
 		ChangeGameMode (CurrentGameMode);
 	}
 }

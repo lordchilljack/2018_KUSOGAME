@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class ending_ctrl : MonoBehaviour {
     public TitleCtrl tc;
+	public Text Scorce;
 	// Use this for initialization
 	void Start () {
-
+		Scorce.text = GameDataManager.scorce.ToString();
     }
 
     // Update is called once per frame
