@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 83507922}
   - component: {fileID: 83507921}
   - component: {fileID: 83507920}
+  - component: {fileID: 83507923}
   m_Layer: 5
   m_Name: A3
   m_TagString: Untagged
@@ -702,6 +703,31 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 83507918}
+--- !u!61 &83507923
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 83507918}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 280, y: 30}
+  m_EdgeRadius: 1
 --- !u!1 &131514002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,7 +1738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26.000004, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &443340302
@@ -1747,7 +1773,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: A1
 --- !u!222 &443340303
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1878,13 +1904,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a7f54871a2716479440910aae53d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestionContent: {fileID: 0}
-  Aws1: {fileID: 0}
-  Aws2: {fileID: 0}
-  Aws3: {fileID: 0}
-  QuestionNum: {fileID: 0}
-  TinkingTime: {fileID: 0}
-  Wheel: {fileID: 0}
+  QuestionContent: {fileID: 926057090}
+  Aws1: {fileID: 443340302}
+  Aws2: {fileID: 1482004766}
+  Aws3: {fileID: 897231194}
+  QuestionNum: {fileID: 1455602454}
+  TinkingTime: {fileID: 2139675658}
+  Wheel: {fileID: 1643771456}
   CurrentPhase: 0
 --- !u!1 &462316144
 GameObject:
@@ -3407,7 +3433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26.000004, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897231194
@@ -3442,7 +3468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: A3
 --- !u!222 &897231195
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3516,7 +3542,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5728\u5E79\u561B?\u70BA\u5565\u8981\u9396\u9580?"
+  m_Text: 
 --- !u!222 &926057091
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4671,6 +4697,7 @@ GameObject:
   - component: {fileID: 1326822345}
   - component: {fileID: 1326822344}
   - component: {fileID: 1326822343}
+  - component: {fileID: 1326822347}
   m_Layer: 5
   m_Name: A1
   m_TagString: Untagged
@@ -4771,6 +4798,31 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1326822341}
+--- !u!61 &1326822347
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326822341}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 280, y: 30}
+  m_EdgeRadius: 1
 --- !u!1 &1363498930
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,7 +5148,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: A1
 --- !u!222 &1455602455
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5135,7 +5187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1482004766
@@ -5170,7 +5222,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: A2
 --- !u!222 &1482004767
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7762,6 +7814,7 @@ GameObject:
   - component: {fileID: 2059178094}
   - component: {fileID: 2059178093}
   - component: {fileID: 2059178092}
+  - component: {fileID: 2059178095}
   m_Layer: 5
   m_Name: A2
   m_TagString: Untagged
@@ -7862,6 +7915,31 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059178090}
+--- !u!61 &2059178095
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2059178090}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 280, y: 30}
+  m_EdgeRadius: 1
 --- !u!1 &2088813697
 GameObject:
   m_ObjectHideFlags: 0
