@@ -50,23 +50,7 @@ public class RonpaModeCtrl : MonoBehaviour {
 	// 檢查環境中 褲子是否有穿 是否最小化 是否有片子聲音 一項 +0.33 危險度
 	//
 	float CheckDangerPercent(){
-		float FinalDanger=0;
-		/*
-		if(褲鍊開啟){
-			FinalDanger=FinalDanger+0.25f;
-		}
-		if(!影片最小化){
-			FinalDanger=FinalDanger+0.30f;
-		}
-		if(影片有聲音&&播放中){
-			FinalDanger=FinalDanger+0.25f;
-		}
-
-		if(GameObject.Find("ToiletPaper(Clone)")!=NULL){
-			FinalDanger=FinalDanger+0.33f;
-		}
-		*/
-
+		float FinalDanger=1;
 		return FinalDanger;
 	}
 
@@ -100,18 +84,18 @@ public class RonpaModeCtrl : MonoBehaviour {
 	//
 	public void sendAws(string BtName){
 		if (BtName == "A1") {
-			D_Percent += A1D [Questions_Order];
+			D_Percent += A1D [Questions_Order[Question_Statue]];
 			Aws2.GetComponentInParent<Button>().enabled = false;
 			Aws3.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 1;
 		} else if (BtName == "A2") {
-			D_Percent += A2D [Questions_Order];
+			D_Percent += A2D [Questions_Order[Question_Statue]];
 			Aws1.GetComponentInParent<Button>().enabled = false;
 			Aws3.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 2;
 		} else if (BtName == "A3") {
-			D_Percent += A3D [Questions_Order];
-			S_Percent += A3S [Questions_Order];
+			D_Percent += A3D [Questions_Order[Question_Statue]];
+			S_Percent += A3S [Questions_Order[Question_Statue]];
 			Aws1.GetComponentInParent<Button>().enabled = false;
 			Aws2.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 3;
@@ -152,9 +136,10 @@ public class RonpaModeCtrl : MonoBehaviour {
 		} else {
 			//end RonpaMode 
 			if (D_Percent>= 0.8f) {
-				//抓包 END
+				DataCtrl.Data.HowEnd = 1;
+				DataCtrl.Data.GameMode = 2;
 			} else {
-				//會去繼續看片
+				DataCtrl.Data.GameMode = 0;
 			}
 		}
 

@@ -41,7 +41,7 @@ public class GameCtrl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		PornAudio.volume = (float)VolumeStatus/10;
-		GameDataManager.scorce = 0;
+		DataCtrl.Data.scorce = 0;
 		Score = 0;
 		JP = 0;
 	}
@@ -216,7 +216,7 @@ public class GameCtrl : MonoBehaviour {
 				SaintStatus = "on";
 				JizzBar.fillAmount = 0;
                 Score += (int)JP;
-				GameDataManager.scorce = Score;
+				DataCtrl.Data.scorce = Score;
                 CurrentScore.text = Score.ToString();
                 JP = 0;
 				float Px =Random.Range (-106.0f,95.0f);
