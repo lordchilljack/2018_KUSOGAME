@@ -235,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\EatPaper.cs" />
+    <Compile Include="Assets\Script\ending_ctrl.cs" />
     <Compile Include="Assets\Script\GameCtrl.cs" />
     <Compile Include="Assets\Script\Loading.cs" />
     <Compile Include="Assets\Script\PCCtrl.cs" />
