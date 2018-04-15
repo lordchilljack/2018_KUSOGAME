@@ -23,6 +23,8 @@ public class RonpaModeCtrl : MonoBehaviour {
 	public float D_Percent = 0.0f; //危險度百分比
 	public float S_Percent = 0.0f; //害羞度百分比
 	public int CurrentAws =0;
+	public int[] Questions_Order;
+	public int Question_Statue;
 
 	private string[] QT ={"在幹嘛?為啥要鎖門?","你為啥不穿褲子?","剛剛那是什麼聲音?","剛剛那是什麼聲音?","你那是什麼聲音? ","沒事別一直用電腦阿?","休假日出去動動啦! ","阿親戚來你怎麼還窩在房間?","你那是..."};
     private string[] A1T ={"關你屁事","我想要通風一下","隔壁貓叫","電腦中毒啦!","OK，好","OK，好","他們來關我屁事","別人傳給我的啦"};
@@ -98,14 +100,18 @@ public class RonpaModeCtrl : MonoBehaviour {
 	//
 	public void sendAws(string BtName){
 		if (BtName == "A1") {
+			D_Percent += A1D [Questions_Order];
 			Aws2.GetComponentInParent<Button>().enabled = false;
 			Aws3.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 1;
 		} else if (BtName == "A2") {
+			D_Percent += A2D [Questions_Order];
 			Aws1.GetComponentInParent<Button>().enabled = false;
 			Aws3.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 2;
 		} else if (BtName == "A3") {
+			D_Percent += A3D [Questions_Order];
+			S_Percent += A3S [Questions_Order];
 			Aws1.GetComponentInParent<Button>().enabled = false;
 			Aws2.GetComponentInParent<Button>().enabled = false;
 			CurrentAws = 3;
@@ -116,12 +122,31 @@ public class RonpaModeCtrl : MonoBehaviour {
 	void Start () {
 		FillingQA (0);
 		EveryRoundSetUp (0);
+		Questions_Order = new int[5]; // Question Order
+		Questions_Order[0] = 0;
+		for (int i = 1; i < Questions_Order.Length; i++) {
+			Questions_Order [i] = Random.Range (1, 5);
+			for (int j = 0; j < i; j++) {
+				while (Questions_Order [i] == Questions_Order [j]) {
+					j = 0;
+					Questions_Order [i] = Random.Range (1, 5);
+				}
+			}
+			//print (Questions_Order [i]);
+		}
+		Question_Statue = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		DGague.fillAmount = D_Percent;
+		SGauge.fillAmount = S_Percent;
 		if (CurrentPhase != 6) {
 			if (TinkTimeTimer == TinkTimeLimit || Answered) {
+				Question_Statue++;
+				FillingQA (Questions_Order [Question_Statue]);
+				EveryRoundSetUp (Questions_Order [Question_Statue]);
+				CurrentPhase++;
 				//跳下一題
 			}
 		} else {
