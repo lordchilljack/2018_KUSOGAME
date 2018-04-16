@@ -961,7 +961,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Present by Try Harder,Okay 2018. ver1.0
+  m_Text: Present by Try Harder,Okay 2018. ver1.1
 --- !u!222 &1112660822
 CanvasRenderer:
   m_ObjectHideFlags: 0

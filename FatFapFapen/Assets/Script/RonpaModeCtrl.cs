@@ -28,14 +28,14 @@ public class RonpaModeCtrl : MonoBehaviour {
 	public int[] Questions_Order;
 	public int Question_Statue;
 
-	private string[] QT ={"在幹嘛?為啥要鎖門?","你為啥不穿褲子?","剛剛那是什麼聲音?","剛剛那是什麼聲音?","你那是什麼聲音? ","沒事別一直用電腦阿?","休假日出去動動啦! ","阿親戚來你怎麼還窩在房間?","你那是..."};
+	private string[] QT ={"在幹嘛?為啥要鎖門?","你為啥不穿褲子?","剛剛那是什麼聲音?","你那是什麼聲音? ","沒事別一直用電腦阿?","休假日出去動動啦! ","阿親戚來你怎麼還窩在房間?","你那是..."};
     private string[] A1T ={"關你屁事","我想要通風一下","隔壁貓叫","電腦中毒啦!","OK，好","OK，好","他們來關我屁事","別人傳給我的啦"};
 	private string[] A2T ={"就想一個人待著","褲子只是裝飾","我也不知道","Youtube廣告啦!","你是想殺死我嗎?","肥宅出門會死掉","歐，是喔，我不知道","我不知道電腦突然就"};
 	private string[] A3T ={"我尻尻也要跟你說喔","想尻一下","是沒聽過片片喔?","配菜音樂阿!","我這是在工作啦!","不要","不然勒?要讓我過去曬肚肉嗎?","阿就片子阿，一起看嗎?"};
-    private float[] A1D ={-0.1f,-0.25f,-0.15f,-0.05f,-0.1f,-0.2f,-0.1f,-0.1f};
-    private float[] A2D ={-0.2f,-0.1f,-0.05f,-0.12f,-0.05f,-0.1f,-0.1f,-0.05f};
-    private float[] A3D ={-0.25f,-0.3f,-0.3f,-0.3f,-0.15f,0.05f,-0.1f,-0.4f};
-    private float[] A3S ={0.3f,0.4f,0.4f,0.4f,0,0,0,1};
+    private float[] A1D ={-0.1f,-0.25f,-0.15f,-0.05f,-0.1f,-0.2f,0.2f,-0.1f};
+    private float[] A2D ={-0.2f,-0.1f,-0.05f,-0.12f,0.05f,-0.1f,-0.1f,-0.05f};
+    private float[] A3D ={-0.25f,-0.3f,-0.3f,0.1f,-0.15f,0.05f,-0.1f,-0.4f};
+    private float[] A3S ={0.3f,0.4f,0.4f,0.4f,0.0f,0.0f,0.0f,1.0f};
 
 	private Sprite d_1;
 	private Sprite d_2;
@@ -58,7 +58,16 @@ public class RonpaModeCtrl : MonoBehaviour {
 	// 檢查環境中 褲子是否有穿 是否最小化 是否有片子聲音 一項 +0.33 危險度
 	//
 	float CheckDangerPercent(){
-		float FinalDanger=0.99f;
+		float FinalDanger = 0.01f;
+		if (DataCtrl.Data.Chkpants)
+			FinalDanger += 0.33f;
+		if (DataCtrl.Data.ChkVolume)
+			FinalDanger += 0.25f;
+		if (DataCtrl.Data.ChkScreen)
+			FinalDanger += 0.33f;
+		GameObject TP = GameObject.Find ("ToiletPaper(Clone)");
+		if (TP)
+			FinalDanger += 0.1f;
 		return FinalDanger;
 	}
 
@@ -109,12 +118,15 @@ public class RonpaModeCtrl : MonoBehaviour {
 			CurrentAws = 2;
 			Answered = true;
 		} else if (BtName == "A3") {
-			D_Percent += A3D [Questions_Order[CurrentPhase]];
-			S_Percent += A3S [Questions_Order[CurrentPhase]];
-			Aws1.GetComponentInParent<Button>().enabled = false;
-			Aws2.GetComponentInParent<Button>().enabled = false;
-			CurrentAws = 3;
-			Answered = true;
+			if (S_Percent <= 0.99f) {
+				D_Percent += A3D [Questions_Order [CurrentPhase]];
+				S_Percent += A3S [Questions_Order [CurrentPhase]];
+				Aws1.GetComponentInParent<Button> ().enabled = false;
+				Aws2.GetComponentInParent<Button> ().enabled = false;
+				CurrentAws = 3;
+				Answered = true;
+			} else
+				Aws3.text = "太羞恥啦我說不出口";
 		}
 	}
 
@@ -126,8 +138,10 @@ public class RonpaModeCtrl : MonoBehaviour {
 		EveryRoundSetUp (0);
 		Questions_Order = new int[5]; // Question Order
 		Questions_Order[0] = 0;
-		S_Percent = 0.0f;
-		D_Percent = CheckDangerPercent();
+		S_Percent = DataCtrl.Data.S_Gauge;
+		D_Percent = CheckDangerPercent()+DataCtrl.Data.D_Gauge;
+		if (D_Percent >= 1.0f)
+			D_Percent = 1.0f;
 		DGague.fillAmount = D_Percent;
 		SGauge.fillAmount = S_Percent;
 		for (int i = 1; i < Questions_Order.Length; i++) {
@@ -141,7 +155,7 @@ public class RonpaModeCtrl : MonoBehaviour {
 		}
 		d_1 = Resources.Load<Sprite> ("d_1");
 		d_2 = Resources.Load<Sprite> ("d_2");
-		d_3 = Resources.Load<Sprite>("d_3");
+		d_3 = Resources.Load<Sprite> ("d_3");
 		h_1 = Resources.Load<Sprite> ("h_1");
 		h_2 = Resources.Load<Sprite> ("h_2");
 		h_3 = Resources.Load<Sprite> ("h_3");
@@ -179,7 +193,7 @@ public class RonpaModeCtrl : MonoBehaviour {
 		SGauge.fillAmount = S_Percent;
 		TinkTimeTimer += Time.deltaTime;
 		TinkingTime.text = (TinkTimeLimit - TinkTimeTimer).ToString("0.00");
-		if (CurrentPhase < 5) {
+		if (CurrentPhase < 5 && D_Percent>=0.01f) {
 			if (TinkTimeTimer >= TinkTimeLimit || Answered) {
 				CurrentPhase++;
 				if((CurrentPhase < 5)){
@@ -199,6 +213,8 @@ public class RonpaModeCtrl : MonoBehaviour {
 			} else {
 				DataCtrl.Data.GameMode = 0;
 				DataCtrl.Data.NeedChange = true;
+				DataCtrl.Data.D_Gauge = D_Percent;
+				DataCtrl.Data.S_Gauge = S_Percent;
 				Start ();
 				gameObject.GetComponent<RonpaModeCtrl> ().enabled = false;
 			}

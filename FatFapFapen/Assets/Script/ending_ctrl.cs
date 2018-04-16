@@ -39,7 +39,7 @@ public class ending_ctrl : MonoBehaviour {
 		while (newtime - nowtime >= 5) {
 			newtime = (int)Time.deltaTime;
 		}
-
+		DataCtrl.Data = null;
         SceneManager.LoadScene(2);
     }
 

@@ -100,16 +100,18 @@ public class GameCtrl : MonoBehaviour {
                 Gain = Mathf.Pow(2, VolumeStatus);
             }
         }
-        if (VolumeStatus == 0) {
-            CurrentVolume.text = "MUTE";
-            Gain = 1;
-        }
-        else if (VolumeStatus == 10) {
-            CurrentVolume.text = "MAX";
-            Gain = 1024;
-        }
-        else
-            CurrentVolume.text = "".PadRight(VolumeStatus, '♦');
+		if (VolumeStatus == 0) {
+			DataCtrl.Data.ChkVolume = false;
+			CurrentVolume.text = "MUTE";
+			Gain = 1;
+		} else if (VolumeStatus == 10) {
+			CurrentVolume.text = "MAX";
+			Gain = 1024;
+		} else {
+			CurrentVolume.text = "".PadRight (VolumeStatus, '▌');
+			if (!DataCtrl.Data.PornPause)
+				DataCtrl.Data.ChkVolume = true;
+		}
 		PornAudio.volume = (float)VolumeStatus/10;
 	}
 
@@ -117,8 +119,10 @@ public class GameCtrl : MonoBehaviour {
 	// 仔細聆聽
 	//
 	public void ListenCarefully(){
-		if(ListenCarefullyCountdown == 0.0)
+		if (ListenCarefullyCountdown == 0.0) {
 			ListenCarefullyCountdown = 10.0f + HearingTelent;
+			gameObject.GetComponent<AudioSource> ().volume = 0.8f;
+		} 
 	}	
 
 	//
@@ -238,17 +242,20 @@ public class GameCtrl : MonoBehaviour {
 					CurrentSaint.text = "尻尻已就緒";
 				} else {
                     //print(SaintCountdown);
-					CurrentSaint.text = "".PadRight ((int)(SaintCountdown), '♦');
+					CurrentSaint.text = "".PadRight ((int)(SaintCountdown), '▌');
 				}
 			}
 		}
 		if (ListenCarefullyCountdown > 0) {
 			ListenCarefullyCountdown -= Time.deltaTime;
-			if (ListenCarefullyCountdown > 0.0)
-				CurrentHearing.text = "".PadRight ((int)Mathf.Floor(ListenCarefullyCountdown), '♦');
+			if (ListenCarefullyCountdown > 0.0) {
+				CurrentHearing.text = "".PadRight ((int)Mathf.Floor (ListenCarefullyCountdown), '▌');
+			}
 			else{
 				ListenCarefullyCountdown = 0;
-				CurrentHearing.text = "未啟動";}
+				gameObject.GetComponent<AudioSource> ().volume = 0.3f;
+				CurrentHearing.text = "未啟動";
+			}
 		} else if (ListenCarefullyCountdown <= 0) {
 			ListenCarefullyCountdown = 0;
 		}

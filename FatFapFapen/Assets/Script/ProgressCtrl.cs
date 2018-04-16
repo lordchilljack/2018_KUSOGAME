@@ -15,7 +15,9 @@ public class ProgressCtrl : MonoBehaviour {
 	public int Assult_dice = 0;
 	public float TimeAnchorOld = 0.0f;
 	public float TimeAnchorNew = 0.0f;
-
+	public float TimeLowBound;
+	public float TimeHiiBound;
+	public float TimeRadBound;
 	void EndMainGame(VideoPlayer VP){
 		SceneManager.LoadScene(3);
 	}
@@ -43,7 +45,8 @@ public class ProgressCtrl : MonoBehaviour {
 			PlayerH.GetComponent<TurnHorizontal> ().enabled = false;
 			PlayerV.GetComponent<TurnVertical> ().enabled = false;
 			RonpaMode.GetComponent<RonpaModeCtrl> ().enabled = true;
-			PornPlayer.GetComponent<VideoPlayer> ().Pause ();
+			//PornPlayer.GetComponent<VideoPlayer> ().Pause ();
+			DataCtrl.Data.PornPause = true;
 			if (NormalUI.GetComponent<AudioSource> ().isPlaying) {
 				NormalUI.GetComponent<AudioSource> ().Pause ();
 			}
@@ -69,6 +72,7 @@ public class ProgressCtrl : MonoBehaviour {
 		DataCtrl.Data.GameMode = 0;
 		TimeAnchorOld += Time.deltaTime;
 		ChangeGameMode (DataCtrl.Data.GameMode);
+		TimeRadBound = Random.Range (TimeLowBound,TimeHiiBound);
 	}
 
 
@@ -78,14 +82,15 @@ public class ProgressCtrl : MonoBehaviour {
 		if (DataCtrl.Data.GameMode == 0) {
 			Assult_dice = Random.Range (0,100);
 			TimeAnchorNew += Time.deltaTime;
-			if ((TimeAnchorNew - TimeAnchorOld) >= 5 && (TimeAnchorNew - TimeAnchorOld) < 6) {
+			if ((TimeAnchorNew - TimeAnchorOld) >= TimeRadBound && (TimeAnchorNew - TimeAnchorOld) < TimeRadBound+1) {
 				if (Assult_dice <= Assult_Rate) {
 					if (!gameObject.GetComponent<AudioSource> ().isPlaying) {
 						gameObject.GetComponent<AudioSource> ().Play ();
 					}	
 				}
-			} else if((TimeAnchorNew - TimeAnchorOld) >= 10 && (TimeAnchorNew - TimeAnchorOld) < 11){
+			} else if((TimeAnchorNew - TimeAnchorOld) >= TimeRadBound+5 && (TimeAnchorNew - TimeAnchorOld) < TimeRadBound+6){
 				gameObject.GetComponent<AudioSource> ().Pause ();
+				TimeRadBound = Random.Range (TimeLowBound,TimeHiiBound);
 				if (Assult_dice <= Assult_Rate) {
 					DataCtrl.Data.GameMode = 1;
 					DataCtrl.Data.NeedChange = true;

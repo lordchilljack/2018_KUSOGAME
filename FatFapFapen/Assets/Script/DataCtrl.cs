@@ -11,6 +11,9 @@ public class DataCtrl : MonoBehaviour {
 			}
 			return _Data;
 		}
+		set{ 
+			_Data = value;
+		}
 	}
 	// Use this for initialization
 	void Start () {
