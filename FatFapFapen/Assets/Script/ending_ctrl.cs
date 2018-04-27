@@ -28,17 +28,14 @@ public class ending_ctrl : MonoBehaviour {
 
     public void menuGame()
     {
+		DataCtrl.Data = null;
         SceneManager.LoadScene(0);
     }
 
     public void ReGame()
     {
-		e04.transform.localScale=new Vector2 (13.25f,8.437336f);
 		int nowtime = (int)Time.deltaTime;
 		int newtime =nowtime;
-		while (newtime - nowtime >= 5) {
-			newtime = (int)Time.deltaTime;
-		}
 		DataCtrl.Data = null;
         SceneManager.LoadScene(2);
     }

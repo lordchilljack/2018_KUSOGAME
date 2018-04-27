@@ -33,6 +33,10 @@ public class GameCtrl : MonoBehaviour {
 	public string NoticeInfo;
 	public float NoticeTimer = 2;
 	public GameObject ToiletP;
+	public AudioSource ZipS;
+	public AudioSource ZipC;
+	public AudioSource JizzP;
+	public AudioSource JizzF;
 
 	private int NowRH=0;
 	private int NowRV=0;
@@ -131,6 +135,7 @@ public class GameCtrl : MonoBehaviour {
 	public void JizzProcess(){
 		NoticeInfo = "on";
 		if (SaintStatus == "off" && !PantsWaer) {
+			JizzP.Play();
 			JizzStatus = "on";
 		} else if(SaintStatus == "off" && PantsWaer){
 			CurrentNotice.text = "褲鏈未開啟";
@@ -151,7 +156,9 @@ public class GameCtrl : MonoBehaviour {
 			PantsWaer = !PantsWaer;
 			if (PantsWaer) {
 				CurrentNotice.text = "褲鏈已拉上";
+				ZipC.Play ();
 			} else {
+				ZipS.Play ();
 				CurrentNotice.text = "褲鏈解放中";
 			}
 		}
@@ -216,6 +223,7 @@ public class GameCtrl : MonoBehaviour {
 			JizzBar.fillAmount = JizzCurrentTime / (JizzDefaultTime - JizzTelent);
 			//print (JizzBar.fillAmount);
 			if (JizzCurrentTime >= (JizzDefaultTime - JizzTelent)) {
+				JizzF.Play ();
 				JizzStatus = "off";
 				JizzCurrentTime = 0;
 				SaintStatus = "on";

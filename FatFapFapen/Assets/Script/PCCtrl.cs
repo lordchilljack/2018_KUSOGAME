@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PCCtrl: MonoBehaviour {
 
@@ -10,10 +11,30 @@ public class PCCtrl: MonoBehaviour {
 	public GameObject PornPause;
 	public GameObject MinBar;
 	public GameObject PPlayer;
+	public Text CurrentMin;
+	public Text CurrentSec;
+	public Text TotalMin;
+	public Text TotalSec;
+	public Image Progressbar;
 
 	public string NowPointName = "none";
 	public int PCState = 0;// 0 DeskTop 1 Playing 2 Pause
-
+	void SetCurrentTimeUI(){
+		string minutes = Mathf.Floor ((int)PPlayer.GetComponent<UnityEngine.Video.VideoPlayer> ().time / 60).ToString("00");
+		string seconds = Mathf.Floor ((int)PPlayer.GetComponent<UnityEngine.Video.VideoPlayer> ().time % 60).ToString("00");
+		CurrentMin.text = minutes;
+		CurrentSec.text = seconds;
+	}
+	void SetTotalTimeUI(){
+		string minutes = Mathf.Floor ((int)PPlayer.GetComponent<UnityEngine.Video.VideoPlayer> ().clip.length / 60).ToString("00");
+		string seconds = Mathf.Floor ((int)PPlayer.GetComponent<UnityEngine.Video.VideoPlayer> ().clip.length  % 60).ToString("00");
+		TotalMin.text = minutes;
+		TotalSec.text = seconds;
+	}
+	void SetProgressBar(){
+		float Percentage = (float)(PPlayer.GetComponent<UnityEngine.Video.VideoPlayer> ().time / PPlayer.GetComponent<UnityEngine.Video.VideoPlayer> ().clip.length);
+		Progressbar.fillAmount = Percentage;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +42,8 @@ public class PCCtrl: MonoBehaviour {
 		PornMainWindow.transform.localPosition = new Vector3 (-176.0f,67.099f,525.97f);
 		MinBar.transform.localPosition = new Vector3 (-39.4f,-35.3f,2.69f);
 		PornPause.transform.localScale = new Vector3 (0.0f,0.0f,0.0f);
+		SetTotalTimeUI ();
+		Progressbar.fillAmount = 0.0f;
 	}
 
 	//
@@ -142,6 +165,11 @@ public class PCCtrl: MonoBehaviour {
 				NowPointName = null;
 			}
 		}
+		if (PPlayer.GetComponent<UnityEngine.Video.VideoPlayer> ().isPlaying) {
+			SetCurrentTimeUI ();
+			SetProgressBar ();
+		}
+
 	}
 
 }

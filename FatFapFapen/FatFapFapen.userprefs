@@ -1,13 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\RonpaModeCtrl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\GameCtrl.cs">
     <Files>
-      <File FileName="Assets\Script\ending_ctrl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\RonpaModeCtrl.cs" Line="37" Column="49" />
+      <File FileName="Assets\Script\ending_ctrl.cs" Line="38" Column="24" />
+      <File FileName="Assets\Script\RonpaModeCtrl.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\TitleCtrl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\PCCtrl.cs" Line="127" Column="69" />
+      <File FileName="Assets\Script\PCCtrl.cs" Line="46" Column="32" />
       <File FileName="Assets\Script\DataCtrl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\GameCtrl.cs" Line="113" Column="36" />
+      <File FileName="Assets\Script\GameCtrl.cs" Line="226" Column="19" />
       <File FileName="Assets\Script\GameDataManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
